@@ -13,10 +13,16 @@ import java.util.List;
 // responsible for getting data and putting in RecyclerView
 public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.TodoViewHolder>{
 
-    private List<String> todoItemsStrings;
+    public interface OnLongClickListener{
+        void onItemLongClicked(int position);
+    }
 
-    public TodoItemAdapter(List<String> todoItemsStrings) {
+    private List<String> todoItemsStrings;
+    OnLongClickListener onLongClickListener;
+
+    public TodoItemAdapter(List<String> todoItemsStrings, OnLongClickListener longClickListener) {
         this.todoItemsStrings = todoItemsStrings;
+        this.onLongClickListener = longClickListener;
     }
 
     @NonNull
@@ -48,16 +54,24 @@ public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.TodoVi
     // Container to provide access to the views that represent each row of data
     class TodoViewHolder extends RecyclerView.ViewHolder {
 
-        TextView item;
+        TextView tdItem;
 
         public TodoViewHolder(@NonNull View itemView) {
             super(itemView);
-            item = itemView.findViewById(android.R.id.text1);
+            tdItem = itemView.findViewById(android.R.id.text1);
         }
 
         // update view inside of the view holder with this data
         public void bind(String todoText) {
-            item.setText(todoText);
+            tdItem.setText(todoText);
+            tdItem.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    // what position was clicked?
+                    onLongClickListener.onItemLongClicked(getAdapterPosition());
+                    return true;
+                }
+            });
         }
     }
 }

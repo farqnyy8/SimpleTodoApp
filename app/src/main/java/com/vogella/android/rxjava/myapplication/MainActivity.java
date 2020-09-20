@@ -22,9 +22,10 @@ public class MainActivity extends AppCompatActivity {
     Button addButton;
     EditText addNewTodoEditText;
 
-    // adapters and recyclerviews
+    // recyclerviews, adapters, and adapter listeners
     RecyclerView listOfTodos;
     TodoItemAdapter todoItemAdapter;
+    TodoItemAdapter.OnLongClickListener onLongClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,7 +38,17 @@ public class MainActivity extends AppCompatActivity {
         items.add("Finish Codepath Prework");
         items.add("Call Teacher");
 
-        todoItemAdapter = new TodoItemAdapter(items);
+        onLongClickListener = new TodoItemAdapter.OnLongClickListener() {
+            @Override
+            public void onItemLongClicked(int position) {
+                String itemRemoved = items.get(position);
+                items.remove(position);
+                todoItemAdapter.notifyItemRemoved(position);
+                makeToast(itemRemoved + " was removed");
+            }
+        };
+
+        todoItemAdapter = new TodoItemAdapter(items, onLongClickListener);
         listOfTodos.setAdapter(todoItemAdapter);
         listOfTodos.setLayoutManager(new LinearLayoutManager(this));
 
