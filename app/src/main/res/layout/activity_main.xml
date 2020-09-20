@@ -8,6 +8,7 @@
     tools:context=".MainActivity">
 
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listOfTodos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/add_todo_item_edit_text"
