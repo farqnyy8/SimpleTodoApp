@@ -17,12 +17,18 @@ public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.TodoVi
         void onItemLongClicked(int position);
     }
 
-    private List<String> todoItemsStrings;
-    OnLongClickListener onLongClickListener;
+    public interface OnClickListener {
+        void onItemClicked(int position);
+    }
 
-    public TodoItemAdapter(List<String> todoItemsStrings, OnLongClickListener longClickListener) {
+    private List<String> todoItemsStrings;
+    private OnLongClickListener onLongClickListener;
+    private OnClickListener onClickListener;
+
+    public TodoItemAdapter(List<String> todoItemsStrings, OnLongClickListener longClickListener, OnClickListener clickListener) {
         this.todoItemsStrings = todoItemsStrings;
         this.onLongClickListener = longClickListener;
+        this.onClickListener = clickListener;
     }
 
     @NonNull
@@ -70,6 +76,12 @@ public class TodoItemAdapter extends RecyclerView.Adapter<TodoItemAdapter.TodoVi
                     // what position was clicked?
                     onLongClickListener.onItemLongClicked(getAdapterPosition());
                     return true;
+                }
+            });
+            tdItem.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickListener.onItemClicked(getAdapterPosition());
                 }
             });
         }

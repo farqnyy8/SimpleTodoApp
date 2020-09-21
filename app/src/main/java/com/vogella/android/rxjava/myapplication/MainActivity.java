@@ -1,9 +1,11 @@
 package com.vogella.android.rxjava.myapplication;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -23,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
 
     // constants
     final String TAG = "MainActivity";
-    final String READDATAERROR = "Error Reading Data";
-    final String WRITEDATAERROR = "Error Writing Data";
+    final private String READDATAERROR = "Error Reading Data";
+    final private String WRITEDATAERROR = "Error Writing Data";
+    final private String UNKNOWNCALLTOONACTIVITYRESULT = "UnKnown call to onActivityResult";
 
     // data holder
     List<String> items;
@@ -37,6 +40,7 @@ public class MainActivity extends AppCompatActivity {
     RecyclerView listOfTodos;
     TodoItemAdapter todoItemAdapter;
     TodoItemAdapter.OnLongClickListener onLongClickListener;
+    TodoItemAdapter.OnClickListener onClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +51,9 @@ public class MainActivity extends AppCompatActivity {
         setUpOnclickListeners();
         loadData();
 
-        todoItemAdapter = new TodoItemAdapter(items, onLongClickListener);
+        todoItemAdapter = new TodoItemAdapter(items, onLongClickListener, onClickListener);
         listOfTodos.setAdapter(todoItemAdapter);
         listOfTodos.setLayoutManager(new LinearLayoutManager(this));
-
-
     }
 
     private void setUpOnclickListeners() {
@@ -87,6 +89,21 @@ public class MainActivity extends AppCompatActivity {
                 storeData();
             }
         };
+
+        onClickListener = new TodoItemAdapter.OnClickListener() {
+            @Override
+            public void onItemClicked(int position) {
+                // create intent
+                Intent editActivityIntent = new Intent(MainActivity.this, EditTodoActivity.class);
+
+                // put required values
+                editActivityIntent.putExtra(EditTodoActivity.KEY_TODO_ITEM_POSITION, position);
+                editActivityIntent.putExtra(EditTodoActivity.KEY_TODO_ITEM_TEXT, items.get(position));
+
+                // display the activity
+                startActivityForResult(editActivityIntent, EditTodoActivity.INTENT_CODE);
+            }
+        };
     }
 
     public void makeToast(String text) {
@@ -97,6 +114,33 @@ public class MainActivity extends AppCompatActivity {
         listOfTodos = findViewById(R.id.listOfTodos);
         addButton = findViewById(R.id.add_todo_item_btn);
         addNewTodoEditText = findViewById(R.id.add_todo_item_edit_text);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK) {
+            if (requestCode == EditTodoActivity.INTENT_CODE) {
+                // get the return values
+                String newTodoText = data.getStringExtra(EditTodoActivity.KEY_TODO_ITEM_TEXT);
+                int changePosition = data.getExtras().getInt(EditTodoActivity.KEY_TODO_ITEM_POSITION);
+
+                // notify the data model
+                items.set(changePosition, newTodoText);
+
+                // notify the view
+                todoItemAdapter.notifyItemChanged(changePosition);
+
+                // save items
+                storeData();
+
+                makeToast("Todo item updated successfully");
+            }
+            else
+            {
+                Log.w(TAG, UNKNOWNCALLTOONACTIVITYRESULT);
+            }
+        }
     }
 
     private File getDataFile() {

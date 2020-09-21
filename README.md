@@ -1,1 +1,1 @@
-# SimpleTodoApp
+# SimpleTodoApp - MVC
