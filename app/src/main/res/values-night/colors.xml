@@ -3,4 +3,11 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!-- dmode colors -->
+    <color name="_colorBackgroundPrimary">#212121</color>
+    <color name="_colorBackgroundSecondary">#424242</color>
+
+    <color name="_textColorPrimary">#F5F5F5</color>
+    <color name="_textColorSecondary">#BDBDBD</color>
 </resources>

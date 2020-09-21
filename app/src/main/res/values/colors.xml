@@ -3,4 +3,15 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <!-- colors that are the same for both modes -->
+    <color name="_primaryButtonBackground">#1565C0</color>
+    <color name="_primaryButtonTextColor">#F5F5F5</color>
+
+    <!-- dmode colors -->
+    <color name="_colorBackgroundPrimary">#F5F5F5</color>
+    <color name="_colorBackgroundSecondary">#BDBDBD</color>
+
+    <color name="_textColorPrimary">#212121</color>
+    <color name="_textColorSecondary">#424242</color>
 </resources>

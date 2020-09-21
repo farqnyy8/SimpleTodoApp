@@ -15,6 +15,7 @@
         android:layout_alignParentTop="true" />
 
     <Button
+        style="@style/PrimaryPillButtonSmall"
         android:id="@+id/add_todo_item_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
