@@ -4,11 +4,11 @@
         <shape>
             <solid android:color="?primaryButtonBackground"/>
             <corners android:radius="24dp"/> <!-- TODO: add resource -->
-            <!--padding
-                android:left="0dp"
-                android:top="0dp"
-                android:right="0dp"
-                android:bottom="0dp" /-->
+            <padding
+                android:left="@dimen/default_margin"
+                android:top="@dimen/default_margin"
+                android:right="@dimen/default_margin"
+                android:bottom="@dimen/default_margin" />
         </shape>
     </item>
 </selector>

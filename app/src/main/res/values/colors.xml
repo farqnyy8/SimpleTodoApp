@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#ee651d</color>
-    <color name="colorPrimaryDark">#aa651d</color>
+    <color name="colorPrimary">#aa651d</color>
+    <color name="colorPrimaryDark">#ee651d</color>
     <color name="colorAccent">#aaaaaa</color>
 
     <!-- colors that are the same for both modes -->

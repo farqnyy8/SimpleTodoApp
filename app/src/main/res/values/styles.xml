@@ -26,6 +26,7 @@
     <style name="PrimaryPillButton">
         <item name="android:background">@drawable/primary_btn_background_small</item>
         <item name="android:textColor">?primaryButtonTextColor</item>
+        <item name="android:textAlignment">center</item>
     </style>
 
     <style name="PrimaryPillButtonSmall" parent="PrimaryPillButton">

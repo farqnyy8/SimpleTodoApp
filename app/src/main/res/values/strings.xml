@@ -24,5 +24,7 @@
 
     <!-- miscellaneous -->
     <string name="tick">Tick</string>
+    <string name="view_todo_items_btn_text">View Todo Items</string>
+    <string name="settings_btn_text">Settings</string>
 
 </resources>
