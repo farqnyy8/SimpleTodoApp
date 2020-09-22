@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.vogella.android.rxjava.myapplication.R;
+import com.vogella.android.rxjava.myapplication.ui.settings.SettingsActivity;
 
 import org.apache.commons.io.FileUtils;
 
@@ -41,8 +42,8 @@ public class ViewTodoItemActivity extends AppCompatActivity {
     // recyclerviews, adapters, and adapter listeners
     RecyclerView listOfTodos;
     TodoItemAdapter todoItemAdapter;
-    TodoItemAdapter.OnLongClickListener onLongClickListener;
-    TodoItemAdapter.OnClickListener onClickListener;
+    TodoItemAdapter.OnLongClickListener todoItemOnLongClickListener;
+    TodoItemAdapter.OnClickListener todoItemOnClickListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +55,7 @@ public class ViewTodoItemActivity extends AppCompatActivity {
         setUpOnclickListeners();
         loadData();
 
-        todoItemAdapter = new TodoItemAdapter(items, onLongClickListener, onClickListener);
+        todoItemAdapter = new TodoItemAdapter(items, todoItemOnLongClickListener, todoItemOnClickListener);
         listOfTodos.setAdapter(todoItemAdapter);
         listOfTodos.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -80,7 +81,7 @@ public class ViewTodoItemActivity extends AppCompatActivity {
             }
         });
 
-        onLongClickListener = new TodoItemAdapter.OnLongClickListener() {
+        todoItemOnLongClickListener = new TodoItemAdapter.OnLongClickListener() {
             @Override
             public void onItemLongClicked(int position) {
                 String itemRemoved = items.get(position);
@@ -93,7 +94,7 @@ public class ViewTodoItemActivity extends AppCompatActivity {
             }
         };
 
-        onClickListener = new TodoItemAdapter.OnClickListener() {
+        todoItemOnClickListener = new TodoItemAdapter.OnClickListener() {
             @Override
             public void onItemClicked(int position) {
                 // create intent

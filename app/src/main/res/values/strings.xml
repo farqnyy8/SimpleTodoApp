@@ -16,4 +16,13 @@
     <string name="edit_item_action_bar_text">Edit Item</string>
     <string name="view_todo_items_action_bar_text">View Todo Items</string>
 
+    <!-- theme texts -->
+    <string name="change_theme">Change Theme</string>
+    <string name="theme_light_mode">Light Mode</string>
+    <string name="theme_dark_mode">Dark Mode</string>
+    <string name="theme_follow_system">Follow System</string>
+
+    <!-- miscellaneous -->
+    <string name="tick">Tick</string>
+
 </resources>

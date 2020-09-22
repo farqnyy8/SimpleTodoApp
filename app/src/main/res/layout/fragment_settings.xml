@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:padding="@dimen/default_margin"
+    android:background="?android:colorBackground"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/theme_changes"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/default_margin_half"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/change_theme"
+            android:textSize="24sp"/>
+
+        <RelativeLayout
+            android:id="@+id/light_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_light_mode"
+                android:textSize="20sp"/>
+
+            <ImageView
+                android:id="@+id/light_mode_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_checkbox"
+                android:visibility="invisible"
+                android:contentDescription="@string/tick" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/dark_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_dark_mode"
+                android:textSize="20sp"/>
+
+            <ImageView
+                android:id="@+id/dark_mode_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_checkbox"
+                android:visibility="invisible"
+                android:contentDescription="@string/tick" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/default_mode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/default_margin"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/theme_follow_system"
+                android:textSize="20sp"/>
+
+            <ImageView
+                android:id="@+id/default_mode_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:src="@drawable/ic_checkbox"
+                android:visibility="invisible"
+                android:contentDescription="@string/tick" />
+
+        </RelativeLayout>
+
+
+    </LinearLayout>
+</LinearLayout>

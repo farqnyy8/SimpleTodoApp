@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.vogella.android.rxjava.myapplication.R;
+import com.vogella.android.rxjava.myapplication.ui.settings.SettingsActivity;
 
 public class MainActivity extends AppCompatActivity {
 
