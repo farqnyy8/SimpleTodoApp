@@ -1,4 +1,4 @@
-package com.vogella.android.rxjava.myapplication;
+package com.vogella.android.rxjava.myapplication.ui;
 
 import android.view.LayoutInflater;
 import android.view.View;

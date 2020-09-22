@@ -1,4 +1,4 @@
-package com.vogella.android.rxjava.myapplication;
+package com.vogella.android.rxjava.myapplication.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.vogella.android.rxjava.myapplication.R;
 
 public class EditTodoActivity extends AppCompatActivity {
 

@@ -14,5 +14,6 @@
 
     <!-- action bar names -->
     <string name="edit_item_action_bar_text">Edit Item</string>
+    <string name="view_todo_items_action_bar_text">View Todo Items</string>
 
 </resources>
